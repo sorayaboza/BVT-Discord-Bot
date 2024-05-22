@@ -6,7 +6,7 @@ Prerequisits: MySQL and Nodejs.
 
 To run:
 1. Type 'npm i' in terminal.
-2. Run schema.sql to create the database.
+2. Run schema.sql by clicking `Ctrl+A > Right Click > Run MySQL` Query to create the database.
 3. Run the app.js file.
 
 Helpful Youtube videos:
@@ -14,6 +14,7 @@ Helpful Youtube videos:
 [MySQL Installation](https://www.youtube.com/watch?v=wgRwITQHszU)
 
 [MySQL in VS Code](https://youtu.be/4KXLY5Sf2fU?si=HIIWXU9mSu5S9rWt)
+
 [Use this resource to fix ER_NOT_SUPPORTED error](https://stackoverflow.com/questions/62260725/er-not-supported-auth-mode-client-does-not-support-authentication-protocol-requ?newreg=4193581bc350422b8134d71293f9d924)
 
 Nodejs install:
