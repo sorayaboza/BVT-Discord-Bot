@@ -5,7 +5,7 @@
 Prerequisits: MySQL and Nodejs.
 
 To run:
-1. Navigate to the Bvt-Discord-Bot folder and type 'npm i' in the terminal.
+1. Navigate to the BVT-Discord-Bot folder and type 'npm i' in the terminal.
 2. Create a `.env` file. Info on its contents are below this list.
 3. Run schema.sql by opening the schema.sql file, then clicking `Ctrl+A > Right Click > Run MySQL Query` to create the database.
 4. Type `nodemon discbot` in the terminal to run the app.
@@ -20,7 +20,7 @@ TOKEN = 'your_disc_token_here'
 ```
 
 ## Helpful Youtube Videos
-##### I used these YouTube videos for the basic app set-up.
+<sub><sup>I used these YouTube videos for the basic app set-up.</sup></sub>
 
 [MySQL Installation](https://www.youtube.com/watch?v=wgRwITQHszU)
 

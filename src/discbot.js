@@ -2,9 +2,25 @@
 // To run & allow changes, type: nodemon discbot
 
 import { Client, GatewayIntentBits, GatewayOpcodes } from 'discord.js';
-import { getVoiceData, updateVoiceData, getUserTotalHours, getOneVoice, createVoiceData } from './database.js'
+import { getVoiceData, updateVoiceData, getUserTotalHours, getOneVoice, createVoiceData, getUserMonthlyHours } from './database.js';
+import express from 'express'
 
 const token = process.env.TOKEN
+const app = express()
+const hostname = '127.0.0.1';
+const port = 3000;
+
+app.use(express.json())
+
+app.get("/voicedata", async (req, res) => {
+    const voicedata = await getVoiceData()
+    res.send(voicedata)
+})
+
+// Posting data in json format
+app.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/voicedata`);
+  });
 
 // Create a new Discord client with specified intents
 const client = new Client({ 
@@ -42,6 +58,7 @@ let timeEntered = 0;
 let timeLeft = 0;
 let inCall = false;
 
+// Logic to handle voice state updates
 client.on('voiceStateUpdate', async (oldState, newState) => {
     // Extract information about the new and old voice states of the user
     let newUserChannel = newState.channel;
@@ -65,18 +82,29 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         let userID = newState.id;
         const user = voicedata.find(user => user.userID === userID);
 
+        // Get current month and year
+        let month = currentDate.toLocaleString('default', { month: 'long' });
+        let year = currentDate.getFullYear();
+        let monthlyHoursColumn = `hours${month}${year}`;
+
         if (user) {
             console.log('User ID exists in the data.');
             // Update the total hours
             let newTotalHours = parseFloat(user.totalHours) + (secondsSpent / 3600); // Convert seconds to hours
             newTotalHours = (Math.round(newTotalHours * 1000) / 1000).toFixed(3); // Round to the nearest 1000th
-            await updateVoiceData(userID, newTotalHours);
-            console.log('Total hours updated.');
+
+            // Update the monthly hours
+            let currentMonthlyHours = await getUserMonthlyHours(userID, monthlyHoursColumn);
+            let newMonthlyHours = (currentMonthlyHours ? parseFloat(currentMonthlyHours) : 0) + (secondsSpent / 3600);
+            newMonthlyHours = (Math.round(newMonthlyHours * 1000) / 1000).toFixed(3);
+
+            await updateVoiceData(userID, newTotalHours, monthlyHoursColumn, newMonthlyHours);
+            console.log('Total hours and monthly hours updated.');
         } else {
             console.log('User ID does not exist in the data.');
             // Add the new user to the database
             let initialHours = (Math.round((secondsSpent / 3600) * 1000) / 1000).toFixed(3); // Store initial hours as converted from seconds and rounded
-            await createVoiceData(userID, initialHours);
+            await createVoiceData(userID, initialHours, monthlyHoursColumn, initialHours);
             console.log('User ID added to the data.');
         }
 

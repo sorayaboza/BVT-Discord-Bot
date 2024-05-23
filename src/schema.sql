@@ -3,12 +3,7 @@ CREATE DATABASE voicedata_app;
 USE voicedata_app;
 
 CREATE TABLE voicedata (
-    id integer PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     userID VARCHAR(255),
-    totalHours VARCHAR(255),
-    hoursJune int
+    totalHours VARCHAR(255)
 );
-
-INSERT INTO voicedata (userID, totalHours)
-VALUES
-('869241242280669215', '31');
