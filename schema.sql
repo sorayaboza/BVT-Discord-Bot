@@ -11,5 +11,4 @@ CREATE TABLE voicedata (
 
 INSERT INTO voicedata (userID, totalHours)
 VALUES
-('507908285714661388', '397'),
 ('869241242280669215', '31');

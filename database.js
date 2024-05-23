@@ -16,6 +16,30 @@ export async function getVoiceData() {
     return rows
 }
 
+// Update the total hours for a user
+export async function updateVoiceData(userID, totalHours) {
+    await pool.query(`
+    UPDATE voicedata
+    SET totalHours = ?
+    WHERE userID = ?
+    `, [parseFloat(totalHours).toFixed(3), userID]); // Round to the nearest 1000th
+}
+
+// Add this function to database.js
+export async function getUserTotalHours(userID) {
+    const [rows] = await pool.query(`
+    SELECT totalHours 
+    FROM voicedata
+    WHERE userID = ?
+    `, [userID]);
+
+    if (rows.length > 0) {
+        return rows[0].totalHours;
+    } else {
+        return null;
+    }
+}
+
 export async function getOneVoice(id) {
     const [rows] = await pool.query(`
     SELECT * 
@@ -38,7 +62,8 @@ export async function createVoiceData(userID, totalHours) {
 
 }
 
-const voicedata = await getOneVoice(1)
+const voicedata = await getVoiceData()
 //const voicedata = await createVoiceData('507908285714661388', '397')
 
-console.log("RESULT: ", voicedata)
+const userIDs = voicedata.map(user => user.userID);
+console.log(userIDs);

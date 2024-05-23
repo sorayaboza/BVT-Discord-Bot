@@ -10,11 +10,13 @@ To run:
 3. Run schema.sql by clicking `Ctrl+A > Right Click > Run MySQL Query` to create the database.
 4. Run the app.js file.
 
+.env file:
 ```javascript
 MYSQL_HOST='127.0.0.1'
 MYSQL_USER='root'
-MYSQL_PASSWORD='your_pass_here'
+MYSQL_PASSWORD='your_mysql_pass_here'
 MYSQL_DATABASE='voicedata_app'
+TOKEN = 'your_disc_token_here'
 ```
 
 Helpful Youtube videos:
