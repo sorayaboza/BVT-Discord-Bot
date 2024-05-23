@@ -1,12 +1,12 @@
 # BVT-Discord-Bot
-### BVT's Discord Bot. Collects voice data of BVT interns on Discord calls.
+### Bay Valley Tech's Discord Bot. Collects voice data of BVT interns on Discord calls.
 
 
 Prerequisits: MySQL and Nodejs.
 
 To run:
 1. Type 'npm i' in terminal.
-2. Create a `.env` file. Info on contents below this list.
+2. Create a `.env` file. Info on its contents are below this list.
 3. Run schema.sql by opening the file, then clicking `Ctrl+A > Right Click > Run MySQL Query` to create the database.
 4. Type `nodemon discbot` in the terminal to run the app.
 
