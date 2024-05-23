@@ -20,11 +20,11 @@ TOKEN = 'your_disc_token_here'
 ```
 
 ## Helpful Youtube Videos
-<sub><sup>I used these YouTube videos for the basic app set-up.</sup></sub>
+I used these YouTube videos for the basic app set-up.
 
 [MySQL Installation](https://www.youtube.com/watch?v=wgRwITQHszU)
 
-[MySQL in VS Code](https://youtu.be/4KXLY5Sf2fU?si=HIIWXU9mSu5S9rWt) --> ([Use this resource to fix ER_NOT_SUPPORTED error](https://stackoverflow.com/questions/62260725/er-not-supported-auth-mode-client-does-not-support-authentication-protocol-requ?newreg=4193581bc350422b8134d71293f9d924))
+[MySQL in VS Code](https://youtu.be/4KXLY5Sf2fU?si=HIIWXU9mSu5S9rWt) ---> ([Use this resource to fix ER_NOT_SUPPORTED error if needed.](https://stackoverflow.com/questions/62260725/er-not-supported-auth-mode-client-does-not-support-authentication-protocol-requ?newreg=4193581bc350422b8134d71293f9d924))
 
 Nodejs install:
  - [Windows 10](https://www.youtube.com/watch?v=__7eOCxJyow)
