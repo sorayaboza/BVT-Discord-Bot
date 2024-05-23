@@ -1,10 +1,10 @@
 {
-  "name": "nodedata",
+  "name": "bvt-discord-bot",
   "version": "1.0.0",
   "type": "module",
-  "main": "main.js",
+  "main": "src/discbot.js",
   "scripts": {
-    "dev": "npx nodemon app.js"
+    "dev": "nodemon discbot"
   },
   "keywords": [],
   "author": "",
